@@ -1,8 +1,8 @@
 name: "Pull Request Updater GitHub Action"
 description: "GitHub Action that updates a pull request with information extracted from branch name"
-author: "Tamim Khan"
+author: 'step-security'
 runs:
-  using: "node12"
+  using: "node24"
   main: "dist/index.js"
 inputs:
   repo-token:

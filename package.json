@@ -10,22 +10,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tzkhan/pr-update-action.git"
+    "url": "git+https://github.com/step-security/pr-update-action.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
     "PullRequest"
   ],
-  "author": "Tamim Khan",
+  "author": "step-security",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tzkhan/pr-update-action/issues"
+    "url": "https://github.com/step-security/pr-update-action/issues"
   },
-  "homepage": "https://github.com/tzkhan/pr-update-action/#readme",
+  "homepage": "https://github.com/step-security/pr-update-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "axios": "^1.7.0"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
