@@ -1,6 +1,9 @@
 name: "Update Pull Request"
 
-on: pull_request
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   update_pr:
@@ -11,8 +14,9 @@ jobs:
       titleUpdated: ${{ steps.update_pr.outputs.titleUpdated }}
       bodyUpdated: ${{ steps.update_pr.outputs.bodyUpdated }}
     steps:
+      - uses: actions/checkout@v7
       - id: update_pr
-        uses: step-security/pr-update-action@v2
+        uses: ./
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           head-branch-regex: '[a-z\d-_.\/]+'
@@ -23,7 +27,12 @@ jobs:
     needs: update_pr
     steps:
       - run: |
-          echo 'baseMatch:' ${{needs.update_pr.outputs.baseMatch}}
-          echo 'headMatch:' ${{needs.update_pr.outputs.headMatch}}
-          echo 'titleUpdated:' ${{needs.update_pr.outputs.titleUpdated}}
-          echo 'bodyUpdated:' ${{needs.update_pr.outputs.bodyUpdated}}
+          echo "baseMatch: $BASE_MATCH"
+          echo "headMatch: $HEAD_MATCH"
+          echo "titleUpdated: $TITLE_UPDATED"
+          echo "bodyUpdated: $BODY_UPDATED"
+        env:
+          BASE_MATCH: ${{ needs.update_pr.outputs.baseMatch }}
+          HEAD_MATCH: ${{ needs.update_pr.outputs.headMatch }}
+          TITLE_UPDATED: ${{ needs.update_pr.outputs.titleUpdated }}
+          BODY_UPDATED: ${{ needs.update_pr.outputs.bodyUpdated }}
